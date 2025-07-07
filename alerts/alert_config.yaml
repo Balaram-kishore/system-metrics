@@ -1,0 +1,37 @@
+# Alert Manager Configuration
+
+# General alert settings
+cooldown_minutes: 5  # Minimum time between duplicate alerts
+
+# Notification channels (uncomment to enable)
+channels:
+  - log        # Always enabled - logs to file and console
+  # - slack    # Slack webhook notifications
+  # - email    # Email notifications
+  # - webhook  # Custom webhook notifications
+
+# Slack configuration (required if slack channel is enabled)
+# slack_webhook_url: "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+
+# Email configuration (required if email channel is enabled)
+email:
+  smtp_server: "smtp.gmail.com"
+  smtp_port: 587
+  use_tls: true
+  username: "your-email@gmail.com"
+  password: "your-app-password"  # Use app password for Gmail
+  to_addresses:
+    - "admin@yourcompany.com"
+    - "alerts@yourcompany.com"
+
+# Custom webhook configuration (required if webhook channel is enabled)
+# webhook_url: "https://your-webhook-endpoint.com/alerts"
+# webhook_headers:
+#   Content-Type: "application/json"
+#   Authorization: "Bearer your-token"
+
+# Alert severity levels and their meanings:
+# - critical: Immediate attention required (system failure imminent)
+# - error: Significant problem that needs attention
+# - warning: Potential issue that should be monitored
+# - info: Informational alert for awareness

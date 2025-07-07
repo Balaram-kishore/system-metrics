@@ -1,0 +1,37 @@
+# Cloud endpoint configuration
+endpoint:
+  url: "http://localhost:8000/ingest"
+  timeout: 10  # Request timeout in seconds
+  max_retries: 3  # Number of retry attempts
+  retry_delay: 5  # Delay between retries in seconds
+
+# How often to collect metrics (seconds)
+interval_seconds: 30
+
+# Logging configuration
+log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+
+# Metrics collection configuration
+metrics:
+  include_network: true  # Include network I/O statistics
+  include_processes: false  # Include top processes (CPU/memory intensive)
+  disk_usage_only: true  # Only collect disk usage, not partition details
+
+# Alert configuration
+alerts:
+  enabled: true
+  cooldown_minutes: 5  # Minimum time between duplicate alerts
+  channels:
+    - log  # Always log alerts
+    # - slack  # Uncomment to enable Slack alerts
+    # - email  # Uncomment to enable email alerts (not implemented yet)
+
+  # Slack webhook URL (required if slack channel is enabled)
+  # slack_webhook_url: "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+
+# Alert thresholds (percentage values)
+thresholds:
+  cpu: 80      # Alert if CPU > 80%
+  memory: 85   # Alert if memory > 85%
+  disk: 90     # Alert if any disk > 90%
+  swap: 50     # Alert if swap > 50%

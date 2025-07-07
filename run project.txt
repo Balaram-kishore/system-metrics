@@ -1,0 +1,12 @@
+python -m venv .venv   # to create virtual environment
+
+.venv\Scripts\activate  # to activate the Scripts
+
+pip install -r metric_collector/requirements.txt    # to install dependencies
+
+python metric_collector/collector.py --test --config metric_collector/config.yaml  #Test Mode 
+
+python metric_collector/collector.py --config metric_collector/config.yaml    #Continuous Service Mode 
+
+python metric_collector/collector.py --test --verbose --config metric_collector/config.yaml   #Enable Debug Logging 
+

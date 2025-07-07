@@ -1,0 +1,38 @@
+[Unit]
+Description=Linux Metrics Collector Service
+Documentation=https://github.com/your-org/metrics-collector
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=metrics
+Group=metrics
+WorkingDirectory=/opt/metrics-collector
+Environment=PYTHONPATH=/opt/metrics-collector
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/metrics-collector/venv/bin/python -m metric_collector.collector --config /etc/metrics-collector/config.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=metrics-collector
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/metrics-collector /var/lib/metrics-collector
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=512M
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

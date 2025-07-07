@@ -1,0 +1,2 @@
+2025-07-07 15:21:10,818 - __main__ - ERROR - Error collecting metrics: module 'os' has no attribute 'uname'
+2025-07-07 15:22:54,603 - __main__ - ERROR - Error collecting metrics: module 'os' has no attribute 'uname'
