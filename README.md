@@ -1,4 +1,4 @@
-# 🚀 Live Demo Walkthrough: System Metrics Collection with InfluxDB & Grafana
+# System Metrics Collection with InfluxDB & Grafana
 
 ## 📋 Overview
 This guide provides a complete walkthrough for demonstrating the system metrics collection project on a Linux Ubuntu EC2 machine with InfluxDB for metrics storage and Grafana for dashboard visualization.
