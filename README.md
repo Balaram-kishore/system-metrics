@@ -111,7 +111,7 @@ influx auth create \
 ```bash
 # Clone the project
 cd /home/ubuntu
-git clone https://github.com/Balaram-kishore/system-metrics-final.git
+git clone https://github.com/Balaram-kishore/system-metrics.git
 cd system-metrics-final
 
 # Create Python virtual environment
