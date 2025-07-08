@@ -253,29 +253,21 @@ chmod +x dashboard/influxdb_setup.sh
 
 ### Phase 1: Environment Setup (5 minutes)
 
-```bash
-# 1. Show the EC2 instance and architecture
-echo "🏗️ System Architecture Overview"
-echo "================================"
-echo "EC2 Instance: $(curl -s http://169.254.169.254/latest/meta-data/instance-type)"
-echo "Public IP: $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)"
-echo "OS: $(lsb_release -d | cut -f2)"
+
 echo "CPU Cores: $(nproc)"
 echo "Memory: $(free -h | grep Mem | awk '{print $2}')"
 echo "Disk: $(df -h / | tail -1 | awk '{print $2}')"
 
 # 2. Show services status
-echo -e "\n📊 Service Status"
-echo "=================="
+
 sudo systemctl status influxdb --no-pager -l
 sudo systemctl status grafana-server --no-pager -l
 
 # 3. Verify connectivity
-echo -e "\n🔗 Service Connectivity"
-echo "======================="
+
 echo "InfluxDB: $(curl -s -o /dev/null -w "%{http_code}" http://localhost:8086/ping)"
 echo "Grafana: $(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/api/health)"
-```
+
 
 ### Phase 2: InfluxDB Configuration (3 minutes)
 
@@ -283,11 +275,6 @@ echo "Grafana: $(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/ap
 # Run InfluxDB setup
 cd dashboard
 ./influxdb_setup.sh
-
-# Show InfluxDB UI
-echo "🌐 Opening InfluxDB UI..."
-echo "URL: http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4):8086"
-```
 
 ### Phase 3: Start Metrics Collection (2 minutes)
 
