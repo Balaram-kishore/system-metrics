@@ -722,14 +722,14 @@ echo "URL: http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
 
 ```bash
 # Terminal 1: Start InfluxDB-enabled ingestion server
-cd /home/ubuntu/system-metrics-final
+cd /home/ubuntu/system-metrics
 source venv/bin/activate
 
 # Update the server to use InfluxDB
 python cloud_ingestion/server.py --host 0.0.0.0 --port 8000
 
 # Terminal 2: Start metrics collector
-cd /home/ubuntu/system-metrics-final
+cd /home/ubuntu/system-metrics
 source venv/bin/activate
 python metric_collector/collector.py --config metric_collector/config.yaml --verbose
 
