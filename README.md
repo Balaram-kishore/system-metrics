@@ -112,7 +112,7 @@ influx auth create \
 # Clone the project
 cd /home/ubuntu
 git clone https://github.com/Balaram-kishore/system-metrics.git
-cd system-metrics-final
+cd system-metrics
 
 # Create Python virtual environment
 python3 -m venv venv
